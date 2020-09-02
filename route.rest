@@ -1,0 +1,28 @@
+GET http://localhost:3000/students
+
+###
+
+GET http://localhost:3000/students/5f49f267ea25cd4bac67a538
+
+
+###
+
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name": "Rona",
+    "studentId": "1522447"
+}
+
+###
+
+DELETE http://localhost:3000/students/5f49f74a84962f3774a80126
+
+###
+PATCH  http://localhost:3000/students/5f49e8fe6ff06540809f9518
+Content-Type: application/json
+
+{
+    "name": "New name"
+}
