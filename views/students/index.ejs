@@ -1,0 +1,24 @@
+<h2>Search Students</h2>
+<form action="/students" method="GET">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= searchOptions.name %>">
+    <button type="submit">Search</button>
+</form>
+<br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <% students.forEach(student => { %>
+          <div class="row">
+          <div class="col-sm">
+            <div><%= student.name  %></div>
+          </div>
+          <div class="col-sm">
+            <div><%= student.studentId  %></div>
+          </div>
+          <div class="col-sm">
+            <div><%= student.course  %></div>
+          </div>
+        </div> 
+        <% }) %>
+      </div>

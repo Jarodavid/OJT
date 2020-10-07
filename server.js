@@ -1,17 +1,31 @@
-require('dotenv').config();
+require('dotenv').config()
 
-const express = require("express");
-const app = express();
-const mongoose = require("mongoose"); 
+const express = require('express')
+const app = express()
+const expressLayouts = require('express-ejs-layouts')
+const bodyParser = require('body-parser')
 
-mongoose.connect(process.env.DATABASE_URL,{ useUnifiedTopology: true, useNewUrlParser: true })
+const indexRouter = require('./routes/index')
+const studentRouter = require('./routes/students')
+const companyRouter = require('./routes/companies')
+
+
+app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('layout', 'layouts/layout')
+
+app.use(expressLayouts)
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}))
+
+const mongoose = require('mongoose')
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
-db.on('error',(error)=>console.error(error))
-db.once('open',()=>console.log('Connected to Database'))
+db.on('error', error => console.error(error))
+db.once('open', () => console.log('Connected to Mongoose'))
 
-app.use(express.json())
+app.use('/', indexRouter)
+app.use('/students', studentRouter)
+app.use('/companies', companyRouter)
 
-const studentsRouter = require('./routes/students')
-app.use('/students',studentsRouter)
-
-app.listen(3000, ()=> console.log('Server Started'))
+app.listen(process.env.PORT || 3000)

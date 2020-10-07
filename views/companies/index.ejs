@@ -1,0 +1,27 @@
+<h2>Search Course</h2>
+<form action="/companies" method="GET">
+    <label>Course</label>
+    <input type="text" name="course" value="<%= searchOptions.course %>">
+    <button type="submit">Search</button>
+</form>
+<br>
+
+   <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <% companies.forEach(company => { %>
+          <div class="row">
+          <div class="col-sm">
+            <div><%= company.company_name  %></div>
+          </div>
+          <div class="col-sm">
+            <div><%= company.company_address  %></div>
+          </div>
+          <div class="col-sm">
+            <div><%= company.course  %></div>
+          </div>
+        </div> 
+        <% }) %>
+      </div>
+    
+   
