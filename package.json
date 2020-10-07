@@ -19,10 +19,5 @@
   "devDependencies": {
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.4"
-  },
-  "description": "\"# mobile-app-daily-time-record\"",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/msalvio-technologies/mobile-app-daily-time-record.git"
   }
 }
