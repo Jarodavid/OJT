@@ -19,6 +19,9 @@
           <div class="col-sm">
             <div><%= student.course  %></div>
           </div>
-        </div> 
-        <% }) %>
+        </div>
+        <a href="/students/<%= student.id %> ">View</a>
+        <a href="/students/<%= student.id %>/edit ">Edit</a> 
+        <%- include('../partials/deleteForm', { url: `/students/${student.id}`}) %> 
+        <% }) %>         
       </div>
